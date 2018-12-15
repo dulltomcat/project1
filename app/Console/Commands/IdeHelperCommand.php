@@ -40,6 +40,9 @@ class IdeHelperCommand extends Command
         if (app()->environment() !== 'production') {
             $this->call('ide-helper:generate');
             $this->call('ide-helper:meta');
+            $this->call('ide-helper:models', [
+                '--nowrite' => true,
+            ]);
         }
         $this->info('Ide Helper updated!');
     }
