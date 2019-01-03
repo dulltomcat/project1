@@ -27,3 +27,12 @@ Route::group(['prefix' => '/todo'], function () {
     Route::post('/update', "TodoController@update")->name('todo.update');
     Route::get('/delete', "TodoController@delete")->name('todo.delete');
 });
+
+Route::group(['prefix' => '/goods'], function () {
+    Route::get('/', "GoodsController@index")->name('goods.index');
+    Route::get('/add', "GoodsController@add")->name('goods.add');
+    Route::post('/save', "GoodsController@save")->name('goods.save');
+    Route::get('/edit', "GoodsController@edit")->name('goods.edit');
+    Route::post('/update', "GoodsController@update")->name('goods.update');
+    Route::get('/delete', "GoodsController@delete")->name('goods.delete');
+});
