@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Todo;
+use App\Models\Goods;
 use Illuminate\Http\Request;
 
 class GoodsController extends Controller
@@ -27,7 +27,9 @@ class GoodsController extends Controller
 
         $goods = new Goods();
         $goods->title = $request->input('title');
-        $goods->content = $request->input('content');
+        $goods->description = $request->input('description');
+        $goods->number = $request->input('number');
+        $goods->price = $request->input('price');
         $goods->save();
 
         return redirect()->route('goods.index');
@@ -50,10 +52,12 @@ class GoodsController extends Controller
 
         $goods = Goods::where('id', $request->input('id'))->first();
         $goods->title = $request->input('title');
-        $goods->content = $request->input('content');
+        $goods->description = $request->input('description');
+        $goods->number = $request->input('number');
+        $goods->price = $request->input('price');
         $goods->save();
 
-        return redirect()->route('todo.index');
+        return redirect()->route('goods.index');
     }
 
     public function delete(Request $request)
