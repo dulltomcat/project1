@@ -1,10 +1,12 @@
 @extends ("layouts.app")
 @section("content")
 
-    <form method="post" action="{{ route('goods.update', ['id' => $goods->id]) }}">
+    <form method="post" action="{{ route('goods.update', ['id' => $good->id]) }}">
         @csrf
-        <label>Название</label><input name="title" value="{{ $goods->title }}">
-        <label>Текст</label><textarea name="content">{{ $goods->content }}</textarea>
+        <label>Наименование</label><input name="title" value="{{ $good->title }}">
+        <label>Описание</label><input name="description" value="{{ $good->description }}">
+        <label>Количество</label><input name="number" value="{{ $good->number }}">
+        <label>Цена</label><input name="price" value="{{ $good->price }}">
         <button type="submit">Изменить</button>
     </form>
 

@@ -3,8 +3,10 @@
 
     <form method="post" action="{{ route('goods.save') }}">
         @csrf
-        <label>Название</label><input name="title">
-        <label>Текст</label><textarea name="content"></textarea>
+        <label>Наименование</label><input name="title">
+        <label>Описание</label><input name="description">
+        <label>Количество</label><input name="number">
+        <label>Цена</label><input name="price">
         <button type="submit">Сохранить</button>
     </form>
 

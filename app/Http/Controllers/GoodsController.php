@@ -42,7 +42,7 @@ class GoodsController extends Controller
         $goods = Goods::where('id', $request->input('id'))->first();
 
         return view("pages.goods.edit", [
-            'goods' => $goods,
+            'good' => $goods,
         ]);
     }
 

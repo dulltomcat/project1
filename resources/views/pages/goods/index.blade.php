@@ -12,15 +12,17 @@
             <th>Количество</th>
             <th>Цена</th>
         </tr>
-        @foreach($goods as $goods)
+        @foreach($goods as $good)
             <tr>
-                <td>{{ $goods->id }}</td>
-                <td>{{ $goods->created_at }}</td>
-                <td>{{ $goods->title }}</td>
-                <td>{{ $goods->content }}</td>
+                <td>{{ $good->id }}</td>
+                <td>{{ $good->created_at }}</td>
+                <td>{{ $good->title }}</td>
+                <td>{{ $good->description }}</td>
+                <td>{{ $good->number }}</td>
+                <td>{{ $good->price }}</td>
                 <td>
-                    <a href="/goods/edit?id={{ $todo->id }}">Редактироать</a>
-                    <a href="/goods/delete?id={{ $todo->id }}">Удалить</a>
+                    <a href="/goods/edit?id={{ $good->id }}">Редактироать</a>
+                    <a href="/goods/delete?id={{ $good->id }}">Удалить</a>
                 </td>
             </tr>
         @endforeach
