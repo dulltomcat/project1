@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Goods;
 use Illuminate\Http\Request;
+use Validator;
 
 class GoodsController extends Controller
 {
@@ -23,13 +24,27 @@ class GoodsController extends Controller
 
     public function save(Request $request)
     {
-//        dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'title'       => 'required|max:15',
+            'description' => 'nullable',
+            'number'      => 'required',
+            'price'       => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $data = $validator->getData();
 
         $goods = new Goods();
-        $goods->title = $request->input('title');
-        $goods->description = $request->input('description');
-        $goods->number = $request->input('number');
-        $goods->price = $request->input('price');
+        $goods->title = $data['title'];
+        $goods->description = $data['description'];
+        $goods->number = $data['number'];
+        $goods->price = $data['price'];
         $goods->save();
 
         return redirect()->route('goods.index');
