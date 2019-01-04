@@ -4,14 +4,17 @@
     <a href="/goods/add">Добавить</a>
     <hr>
 
-    <table>
-        <tr>
-            <th>id</th>
-            <th>Наименование</th>
-            <th>Описание</th>
-            <th>Количество</th>
-            <th>Цена</th>
-        </tr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Наименование</th>
+                <th>Описание</th>
+                <th>Количество</th>
+                <th>Цена</th>
+            </tr>
+        </thead>
+        <tbody>
         @foreach($goods as $good)
             <tr>
                 <td>{{ $good->id }}</td>
@@ -26,6 +29,7 @@
                 </td>
             </tr>
         @endforeach
+        </tbody>
     </table>
 
 @endsection
