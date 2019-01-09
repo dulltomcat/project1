@@ -5,7 +5,8 @@
         @csrf
         <label>Наименование</label><input name="title">
         <label>Описание</label><input name="description">
-        <label>Количество</label><input name="number">
+        <label>Количество в магазине</label><input name="number_in_store">
+        <label>Количество на складе</label><input name="number_in_stock">
         <label>Цена</label><input name="price">
         <button type="submit">Сохранить</button>
     </form>

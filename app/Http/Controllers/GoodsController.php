@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Goods;
 use Illuminate\Http\Request;
+use Validator;
 
 class GoodsController extends Controller
 {
@@ -23,12 +24,28 @@ class GoodsController extends Controller
 
     public function save(Request $request)
     {
-//        dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'title'       => 'required|max:15',
+            'description' => 'nullable',
+            'number_in_store'      => 'required',
+            'number_in_stock'      => 'required',
+            'price'       => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $data = $validator->getData();
 
         $goods = new Goods();
         $goods->title = $request->input('title');
         $goods->description = $request->input('description');
-        $goods->number = $request->input('number');
+        $goods->number_in_store = $request->input('number_in_store');
+        $goods->number_in_stock = $request->input('number_in_stock');
         $goods->price = $request->input('price');
         $goods->save();
 
@@ -53,7 +70,8 @@ class GoodsController extends Controller
         $goods = Goods::where('id', $request->input('id'))->first();
         $goods->title = $request->input('title');
         $goods->description = $request->input('description');
-        $goods->number = $request->input('number');
+        $goods->number_in_store = $request->input('number_in_store');
+        $goods->number_in_stock = $request->input('number_in_stock');
         $goods->price = $request->input('price');
         $goods->save();
 

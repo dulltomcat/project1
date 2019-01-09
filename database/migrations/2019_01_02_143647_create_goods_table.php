@@ -17,7 +17,8 @@ class CreateGoodsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('description');
-            $table->string('number');
+            $table->string('number_in_store');
+            $table->string('number_in_stock');
             $table->string('price');
             $table->timestamps();
         });
