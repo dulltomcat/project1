@@ -85,4 +85,5 @@ class GoodsController extends Controller
 
         return redirect()->route('goods.index');
     }
+
 }
