@@ -25,11 +25,11 @@ class GoodsController extends Controller
     public function save(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title'       => 'required|max:15',
+            'title' => 'required|max:15',
             'description' => 'nullable',
-            'number_in_store'      => 'required',
-            'number_in_stock'      => 'required',
-            'price'       => 'required',
+            'number_in_store' => 'required',
+            'number_in_stock' => 'required',
+            'price' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -42,11 +42,11 @@ class GoodsController extends Controller
         $data = $validator->getData();
 
         $goods = new Goods();
-        $goods->title = $request->input('title');
-        $goods->description = $request->input('description');
-        $goods->number_in_store = $request->input('number_in_store');
-        $goods->number_in_stock = $request->input('number_in_stock');
-        $goods->price = $request->input('price');
+        $goods->title = $data['title'];
+        $goods->description = $data['description'];
+        $goods->number_in_store = $data['number_in_store'];
+        $goods->number_in_stock = $data['number_in_stock'];
+        $goods->price = $data['price'];
         $goods->save();
 
         return redirect()->route('goods.index');

@@ -4,7 +4,7 @@
     <a href="/goods/add">Добавить</a>
     <hr>
 
-    <table border="1">
+    <table class="table">
         <thead>
             <tr>
                 <th>id</th>
